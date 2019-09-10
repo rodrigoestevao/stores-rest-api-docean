@@ -1,0 +1,18 @@
+[Unit]
+Description=uWSGI items rest
+Aftert=network.target
+
+[Service]
+User=rodrigo
+Group=rodrigo
+WorkingDirectory=/var/www/html/items-rest
+Environment="DATABASE_URL=postgres://rodrigo:abc#123@localhost:5432/rodrigo"
+Restart=always
+Type=notify
+NotifyAccess=all
+KillSignal=SIGQUIT
+;ExecStart=/home/rodrigo/.local/opt/miniconda3/bin/conda activate items-api && /home/rodrigo/.local/opt/miniconda3/envs/items-api/bin/uwsgi --master --emperor /var/www/html/items-rest/uwsgi.ini --die-on-term --uid rodrigo --gid rodrigo --logto /var/www/html/items-rest/logs/emperor.log
+ExecStart=/home/rodrigo/.local/opt/miniconda3/bin/conda activate items-api && /home/rodrigo/.local/opt/miniconda3/envs/items-api/bin/uwsgi --ini /var/www/html/items-rest/uwsgi.ini
+
+[Install]
+WnatedBy=multi-user.target
