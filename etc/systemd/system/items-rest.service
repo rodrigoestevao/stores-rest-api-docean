@@ -12,7 +12,7 @@ Type=notify
 NotifyAccess=all
 KillSignal=SIGQUIT
 ;ExecStart=/home/rodrigo/.local/opt/miniconda3/bin/conda activate items-api && /home/rodrigo/.local/opt/miniconda3/envs/items-api/bin/uwsgi --master --emperor /var/www/html/items-rest/uwsgi.ini --die-on-term --uid rodrigo --gid rodrigo --logto /var/www/html/items-rest/logs/emperor.log
-ExecStart=/home/rodrigo/.local/opt/miniconda3/bin/conda activate items-api && /home/rodrigo/.local/opt/miniconda3/envs/items-api/bin/uwsgi --ini /var/www/html/items-rest/uwsgi.ini
+ExecStart=/var/www/html/items-rest/venv/bin/uwsgi --ini /var/www/html/items-rest/uwsgi.ini
 
 [Install]
 WnatedBy=multi-user.target
