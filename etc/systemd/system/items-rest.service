@@ -1,18 +1,17 @@
 [Unit]
 Description=uWSGI items rest
-Aftert=network.target
 
 [Service]
 User=rodrigo
 Group=rodrigo
 WorkingDirectory=/var/www/html/items-rest
-Environment="DATABASE_URL=postgres://rodrigo:abc#123@localhost:5432/rodrigo"
+Environment=DATABASE_URL=postgres://rodrigo:abc#123@localhost:5432/rodrigo
 Restart=always
 Type=notify
 NotifyAccess=all
 KillSignal=SIGQUIT
-;ExecStart=/var/www/html/items-rest/venv/bin/conda activate items-api && /var/www/html/items-rest/venv/envs/items-api/bin/uwsgi --master --emperor /var/www/html/items-rest/uwsgi.ini --die-on-term --uid rodrigo --gid rodrigo --logto /var/www/html/items-rest/logs/emperor.log
-ExecStart=/var/www/html/items-rest/venv/bin/uwsgi --ini /var/www/html/items-rest/uwsgi.ini
+ExecStart=/var/www/html/items-rest/venv/bin/uwsgi --master --emperor /var/www/html/items-rest/uwsgi.ini --die-on-term --uid rodrigo --gid rodrigo --logto /var/www/html/items-rest/logs/emperor.log
+;ExecStart=/var/www/html/items-rest/venv/bin/uwsgi --ini /var/www/html/items-rest/uwsgi.ini
 
 [Install]
 WnatedBy=multi-user.target
