@@ -14,4 +14,4 @@ ExecStart=/var/www/html/items-rest/venv/bin/uwsgi --master --emperor /var/www/ht
 ;ExecStart=/var/www/html/items-rest/venv/bin/uwsgi --ini /var/www/html/items-rest/uwsgi.ini
 
 [Install]
-WnatedBy=multi-user.target
+WantedBy=multi-user.target
